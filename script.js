@@ -106,6 +106,6 @@ const CourseInfo = {
   function getLearnerData(courseInfo, assignmentGroup, LearnerSubmissions) {
     if (courseInfo.id !== assignmentGroup.course_id) {
         throw new
-    Error('Invalid data: Assignment group does not belong to the course.');
+    Error('Invalid data: Course and Assignment group do not match.');
     }
   }
