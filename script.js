@@ -109,3 +109,12 @@ const CourseInfo = {
     Error('Invalid data: Course and Assignment group do not match.');
     }
   }
+
+  const learnerData = [];
+
+//Loop through learner submissions
+for (const submission of LearnerSubmissions) {
+    const learnerId = submission.learner_id;
+    let learnerEntry = learnerData.find((entry) => entry.id === learnerId);
+}
+
