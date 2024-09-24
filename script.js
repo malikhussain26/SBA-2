@@ -144,4 +144,11 @@ function calculateAssignmentScore(submission, assignments) {
             return null;
         }
     }
+
+    const submittedAt = new Date(submission.submission.submitted_at);
+    const dueAt = new Date(assignment.due_at);
+    const isLate = submittedAt > dueAt;
+    let score = submission.submission.score;
+
+    
 }
