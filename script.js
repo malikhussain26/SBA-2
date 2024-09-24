@@ -76,6 +76,30 @@ const CourseInfo = {
     }
   ];
 
+  function getLearnerData(course, ag, submissions) {
+    // here, we would process this data to achieve the desired result.
+    const result = [
+      {
+        id: 125,
+        avg: 0.985, // (47 + 150) / (50 + 150)
+        1: 0.94, // 47 / 50
+        2: 1.0 // 150 / 150
+      },
+      {
+        id: 132,
+        avg: 0.82, // (39 + 125) / (50 + 150)
+        1: 0.78, // 39 / 50
+        2: 0.833 // late: (140 - 15) / 150
+      }
+    ];
+  
+    return result;
+  }
+  
+  const result = getLearnerData(CourseInfo, AssignmentGroup, learnerSubmissions);
+  
+  console.log(result);
+
   //=============================================
 
   function getLearnerData(courseInfo, assignmentGroup, _learnerSubmissions) {
@@ -113,5 +137,11 @@ for (const learnerData of learnerResults) {
 return learnerResults;
 }
 
-const result = getLearnerData(courseInfo, assignmentGroup, learnerSubmissions);
-console.log(result);
+function calculateAssignmentScore(submission, assignments) {
+    try {
+        const assignment = assignment.find(a => a.id === submission.assignment_id);
+        if (!assignment) {
+            return null;
+        }
+    }
+}
