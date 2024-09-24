@@ -83,7 +83,7 @@ const CourseInfo = {
         throw new
     Error('Invalid data: Course and Assignment group do not match.');
     }
-  }
+  
 
   const learnerResults = [];
 
@@ -96,4 +96,22 @@ for (const submission of learnerSubmissions) {
         learnerData = { id: learnerId, avg: 0, };
         learnerResults.push(learnerData);
     }
+
+    const assignmentScore = calculateAssignmentScore(submission, assignmentGroup.assignments);
+if (assignmentScore) {
+    learnerData[assignmentScore.id] = assignmentScore.score;
+    learnerData.avg += assignmentScore.weightedScore;
+    }
+
 }
+
+// Calculating final average
+for (const learnerData of learnerResults) {
+    learnerData.avg /= Object.keys(learnerData).length - 1; //excluding id property
+}
+
+return learnerResults;
+}
+
+const result = getLearnerData(courseInfo, assignmentGroup, learnerSubmissions);
+console.log(result);
